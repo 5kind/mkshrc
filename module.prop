@@ -1,7 +1,7 @@
-id=MMT-Ex
-name=Magisk Module Template Extended
+id=mkshrc
+name=Systemless Mkshrc
 version=v1.0
 versionCode=1
 author=5kind
-description=Magisk Module Template Extended
-updateJson=https://raw.githubusercontent.com/5kind/MMT-Extended/master/update.json
+description=Provide profile support for mkshrc
+updateJson=https://raw.githubusercontent.com/5kind/mkshrc/master/update.json

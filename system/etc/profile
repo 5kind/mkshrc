@@ -1,0 +1,28 @@
+# /etc/profile
+# This script is a modified version of the /etc/profile found on
+# Arch Linux systems (licensed GPLv2+).
+
+# Append "$1" to $PATH when not already in.
+# This function API is accessible to scripts in /etc/profile.d
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+# Force PATH to be environment
+export PATH
+
+# Load profiles from /etc/profile.d
+if test -d /etc/profile.d/; then
+	for profile in /etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
+fi
+
+# Unload our profile API functions
+unset -f append_path
