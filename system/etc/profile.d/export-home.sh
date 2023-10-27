@@ -1,25 +1,22 @@
-HOME=/data/local/root
-
 export_home(){
-    if [ -d $HOME ] ;then
-        export HOME
+    local neohome=$1
+    if [ -d $neohome ] ;then
+        export HOME=$neohome
     else
         export HOME=/
+	return 1
     fi
 }
 
 # export root/shell home
+USER_ID=$(id -u)
 if (( ! USER_ID )) ;then
-    HOME=/data/local/root
-    export_home
+    export_home /data/local/root
 elif (( USER_ID == 2000 )) ;then
-    HOME=/data/user_de/0/com.android.shell/files
-    export_home
+    export_home /data/user_de/0/com.android.shell/files
 else
-    HOME=/
-    export HOME
+    export HOME=/
 fi
-# else
-#     HOME=/data/data/com.termux/files/home
-#     export_home
+# elif; export_home /data/data/com.termux/files/home ;then ...
 # # export termux home is disable by default.
+unset -f export_home
