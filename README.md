@@ -4,9 +4,6 @@
   <!-- Version -->
     <img src="https://img.shields.io/badge/Version-v1.0-blue.svg?longCache=true&style=popout-square"
       alt="Version" />
-  <!-- Last Updated -->
-    <img src="https://img.shields.io/badge/Updated-September 11, 2023-green.svg?longCache=true&style=flat-square"
-      alt="_time_stamp_" />
   <!-- Min Magisk -->
     <img src="https://img.shields.io/badge/MinMagisk-20.4-red.svg?longCache=true&style=flat-square"
       alt="_time_stamp_" />
@@ -20,13 +17,19 @@
 
 <div align="center">
   <h3>
-    <a href="https://github.com/5kind/MMT-Extended">
+    <a href="https://github.com/5kind/mkshrc">
       Source Code
     </a>
     <span>
   </h3>
 </div>
 
+### Function
+See next scripts in [profile.d](system/etc/profile.d) for details.  
+- [append-termux-path](system/etc/profile.d/append-termux-path.sh)  
+- [export-home](system/etc/profile.d/export-home.sh)  
+
 ### Usage
 - Install this module and [Termux APP](https://github.com/termux/termux-app)
-- Then run shell as root
+- Add profile scripts to `$MODDIR/system/etc/profile.d`,
+- `reboot` and `su` . # (MODDIR=/data/adb/modules)

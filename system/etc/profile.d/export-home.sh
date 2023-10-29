@@ -1,6 +1,6 @@
 export_home(){
     local neohome=$1
-    if [ -d $neohome ] ;then
+    if [ -d "$neohome" ] ;then
         export HOME=$neohome
     else
         export HOME=/
@@ -9,10 +9,9 @@ export_home(){
 }
 
 # export root/shell home
-USER_ID=$(id -u)
-if (( ! USER_ID )) ;then
+if [ "$USER_ID" = 0 ] ;then
     export_home /data/local/root
-elif (( USER_ID == 2000 )) ;then
+elif [ "$USER_ID" = 2000 ] ;then
     export_home /data/user_de/0/com.android.shell/files
 else
     export HOME=/
