@@ -24,11 +24,6 @@
   </h3>
 </div>
 
-### Function
-See next scripts in [profile.d](system/etc/profile.d) for details.  
-- [append-termux-path](system/etc/profile.d/append-termux-path.sh)  
-- [export-home](system/etc/profile.d/export-home.sh)  
-
 ### Usage
 - Install this module and [Termux APP](https://github.com/termux/termux-app)
 - Add profile scripts to `$MODDIR/system/etc/profile.d`,
