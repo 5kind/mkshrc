@@ -13,6 +13,17 @@ append_path () {
     esac
 }
 
+# Append "$1" to $PATH when it exists and is a directory.
+append_exist_path(){
+    local newpath="$1"
+    if [ -d "$newpath" ] && [ -x "$newpath" ] ;then
+        append_path "$(realpath $newpath)"
+        return 0
+    else
+        return 1
+    fi
+}
+
 # Force PATH to be environment
 export PATH
 
@@ -25,4 +36,4 @@ if test -d /etc/profile.d/; then
 fi
 
 # Unload our profile API functions
-unset -f append_path
+unset -f append_path append_exist_path
