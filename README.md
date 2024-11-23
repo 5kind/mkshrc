@@ -12,7 +12,7 @@
       alt="_time_stamp_" /></div>
 
 <div align="center">
-  <strong>Systemless Mkshrc provide profile support for mkshrc and makes shell profile easy.
+  <strong>Systemless Mkshrc provide profile support for sh.
 </div>
 
 <div align="center">
@@ -25,6 +25,9 @@
 </div>
 
 ### Usage
-- Install this module and [Termux APP](https://github.com/termux/termux-app)
-- Add profile scripts to `$MODDIR/system/etc/profile.d`,
-- `reboot` and `su` . # (MODDIR=/data/adb/modules)
+- Install this module;
+- Add profile scripts to `$MODDIR/system/etc/profile.d`;
+- `reboot` and `su`.
+
+### Recommend
+- Install [Termux APP](https://github.com/termux/termux-app) and use termux command in root shell.

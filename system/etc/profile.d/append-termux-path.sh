@@ -1,3 +1,3 @@
 PREFIX=/data/data/com.termux/files/usr
-append_exist_path $PREFIX/bin ||
+append_path $PREFIX/bin ||
 unset PREFIX
