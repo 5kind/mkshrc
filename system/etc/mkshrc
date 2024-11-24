@@ -17,4 +17,4 @@ PS4='[$EPOCHREALTIME] '; PS1='${|
 	return $e
 }$HOSTNAME:${PWD:-?} '"$PS1 "
 
-source /etc/profile
+[ -f /etc/profile ] && [ -r /etc/profile ] && . /etc/profile
