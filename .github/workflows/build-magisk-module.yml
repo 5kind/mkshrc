@@ -82,7 +82,7 @@ jobs:
       - name: Package Module to install.zip
         run: |
           echo "Packaging module..."
-          local -a zip_exclude_args=()
+          zip_exclude_args=()
           if [ -f ".gitignore" ]; then
             echo "Found .gitignore, adding it to exclusions."
             zip_exclude_args+=("-x@.gitignore")
