@@ -1,7 +1,7 @@
 id=mkshrc
 name=Systemless Mkshrc
-version=v1.1
-versionCode=2
+version=v1.1.1
+versionCode=10101
 author=5kind
 description=Provide profile support for mkshrc
 updateJson=https://raw.githubusercontent.com/5kind/mkshrc/master/update.json

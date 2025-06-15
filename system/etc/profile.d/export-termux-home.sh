@@ -3,7 +3,6 @@ export_home(){
     if [ -d "$newhome" ] && [ -x "$newhome" ] ;then
         export HOME=$newhome
     else
-        export HOME=/
 	    return 1
     fi
 }
@@ -15,6 +14,6 @@ elif [ "$USER_ID" = 2000 ] ;then    # shell
     export_home /data/user_de/0/com.android.shell/files
 else                                # termux
     export_home /data/data/com.termux/files/home
-fi || export HOME=/                 # failback
+fi || export HOME=/sdcard           # failback
 
 unset -f export_home
