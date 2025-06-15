@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'module.prop'
+  workflow_dispatch:
       
 permissions:
   contents: write
