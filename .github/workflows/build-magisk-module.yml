@@ -81,18 +81,18 @@ jobs:
       - name: Package Module to install.zip
         run: |
           echo "Packaging module..."
-          zip_exclude_args=""
+          local -a zip_exclude_args=()
           if [ -f ".gitignore" ]; then
             echo "Found .gitignore, adding it to exclusions."
-            zip_exclude_args="${zip_exclude_args} -x@.gitignore"
+            zip_exclude_args+=("-x@.gitignore")
           fi
           if [ -f ".zipignore" ]; then
             echo "Found .zipignore, adding it to exclusions."
-            zip_exclude_args="${zip_exclude_args} -x@.zipignore"
+            zip_exclude_args+=("-x@.zipignore")
           fi
           # Package all module-related files into install.zip
-          echo "Running zip command with exclusions: ${zip_exclude_args}"
-          zip -r install.zip * ${zip_exclude_args}
+          echo "Running zip command with exclusions: ${zip_exclude_args[@]}"
+          zip -r install.zip . ${zip_exclude_args[@]}
 
       # Step 4: Create GitHub Release and upload install.zip
       - name: Create GitHub Release
