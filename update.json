@@ -1,6 +1,6 @@
 {
-  "version": "v1.1.1",
-  "versionCode": 10101,
-  "zipUrl": "https://github.com/5kind/mkshrc/releases/download/v1.1.1/install.zip",
+  "version": "v1.1.2",
+  "versionCode": 24,
+  "zipUrl": "https://github.com/5kind/mkshrc/releases/download/v1.1.2/install.zip",
   "changelog": "https://raw.githubusercontent.com/5kind/mkshrc/master/changelog.md"
 }
