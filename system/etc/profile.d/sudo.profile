@@ -7,10 +7,6 @@ _SUDO_VERSION="0.1.0"
 
 [ -z "$_SU_BINARY" ] && _SU_BINARY="su"
 
-_SU_ARGS=""
-_SU_EXEC=""
-_TARGET_USER=""
-
 _sudo_usage(){
     cat << EOF
 sudo-lite - run commands as root or another user
@@ -34,6 +30,10 @@ _sudo_version() {
 }
 
 sudo(){
+    _SU_ARGS=""
+    _SU_EXEC=""
+    _TARGET_USER=""
+
     while [ "$#" -gt 0 ]; do
         case "$1" in
             -h|--help)
