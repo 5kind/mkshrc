@@ -33,20 +33,23 @@ sudo(){
     _SU_ARGS=""
     _SU_EXEC=""
     _TARGET_USER=""
+    _LOGIN_FLAG=false
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
             -h|--help)
                 _sudo_usage
+                return 0
                 ;;
             -V|--version)
                 _sudo_version
+                return 0
                 ;;
             -E|--preserve-env)
                 _SU_ARGS="$_SU_ARGS -p"
                 ;;
             -i|--login)
-                _SU_ARGS="$_SU_ARGS -l"
+                _LOGIN_FLAG=true
                 ;;
             -u)
                 _TARGET_USER="$2"
@@ -67,7 +70,26 @@ sudo(){
         shift
     done
 
-    eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -c $_SU_EXEC"
+    if [ -z "$_SU_EXEC" ] && $_LOGIN_FLAG; then
+        eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -l"
+        return $?
+    elif [ -n "$_SU_EXEC" ]; then
+        eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -c \"$_SU_EXEC\""
+        return $?
+    else
+        _sudo_usage
+        return 1
+    fi
+}
+
+# ======================================================
+# Helper functions
+# ======================================================
+_sudo_check(){
+    if [ -z "$_SU_EXEC" ]; then
+        _sudo_usage
+        return 1
+    fi
 }
 
 # ======================================================
