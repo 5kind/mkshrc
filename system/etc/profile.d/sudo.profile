@@ -23,15 +23,14 @@ Options:
   -i, --login                   run login shell as the target user
   -u, --user=user               run command as specified user name or ID
   --                            stop processing command line arguments
-  -h, --help                    display help message and exit
-  -V, --version                 display version information and exit
+  -h, --help                    display help message
+  -V, --version                 display version information
 EOF
 }
 
 _sudo_version() {
     echo "Sudo-Lite version $_SUDO_VERSION"
-    "$_SU_BINARY" -V 2>/dev/null || echo "Could not determine su version."
-    exit 0
+    "$_SU_BINARY" -v 2>/dev/null || echo "Could not determine su version."
 }
 
 sudo(){
@@ -44,10 +43,10 @@ sudo(){
                 _sudo_version
                 ;;
             -E|--preserve-env)
-                _SU_ARGS="$SU_ARGS -p"
+                _SU_ARGS="$_SU_ARGS -p"
                 ;;
             -i|--login)
-                _SU_ARGS="$SU_ARGS -l"
+                _SU_ARGS="$_SU_ARGS -l"
                 ;;
             -u)
                 _TARGET_USER="$2"
@@ -68,7 +67,7 @@ sudo(){
         shift
     done
 
-    eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER $_SU_EXEC"
+    eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -c $_SU_EXEC"
 }
 
 # ======================================================
