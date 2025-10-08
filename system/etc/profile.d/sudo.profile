@@ -62,13 +62,19 @@ sudo(){
                 shift
                 break
                 ;;
+            -*)
+                echo "sudo: invalid option '$1'" 1>&2
+                _sudo_usage
+                return 1
+                ;;
             *)
-                _SU_EXEC="$@"
                 break
                 ;;
         esac
         shift
     done
+
+    _SU_EXEC="$@"
 
     if [ -z "$_SU_EXEC" ] && $_LOGIN_FLAG; then
         eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -l"
@@ -77,16 +83,6 @@ sudo(){
         eval "$_SU_BINARY $_SU_ARGS $_TARGET_USER -c \"$_SU_EXEC\""
         return $?
     else
-        _sudo_usage
-        return 1
-    fi
-}
-
-# ======================================================
-# Helper functions
-# ======================================================
-_sudo_check(){
-    if [ -z "$_SU_EXEC" ]; then
         _sudo_usage
         return 1
     fi
